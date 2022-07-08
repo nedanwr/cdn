@@ -1,0 +1,11 @@
+# IDE Settings
+.idea
+
+# NPM
+node_modules
+
+# Next.js
+.next
+
+# Local Env File
+.env*.local
