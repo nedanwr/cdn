@@ -25,4 +25,9 @@ export const useFirebaseAuth = () => {
 
         setLoading(false);
     };
+
+    const clear = (): void => {
+        setAuthUser(null);
+        setLoading(true);
+    };
 }
