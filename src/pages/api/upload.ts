@@ -34,3 +34,6 @@ export const apiRoute = nextConnect({
             })
     }
 });
+
+// Upload a File
+apiRoute.use(upload.single("file"));
