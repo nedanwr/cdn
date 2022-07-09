@@ -33,4 +33,4 @@ export const apiRoute = nextConnect({
                 message: `Method '${req.method}' not allowed`,
             })
     }
-})
+});
