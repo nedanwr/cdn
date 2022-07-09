@@ -6,6 +6,7 @@ import {
     createUserWithEmailAndPassword,
     signOut
 } from "firebase/auth";
+import type { Auth } from "firebase/auth";
 
 const formatAuthUser = (user: any) => ({
     uid: user.uid,
@@ -18,7 +19,7 @@ export const useFirebaseAuth = () => {
     const [loading, setLoading] = useState<boolean>(true);
 
     // Set Auth
-    const auth = getAuth();
+    const auth: Auth = getAuth();
 
     const authStateChanged = async (authState: any) => {
         if (!authState) {
@@ -40,15 +41,15 @@ export const useFirebaseAuth = () => {
         setLoading(true);
     };
 
-    const signInWithEmailAndPassword = async (email: string, password: string) => {
-        await signInWithEmailAndPassword(email, password);
+    const logIn = async (email: string, password: string) => {
+        await signInWithEmailAndPassword(auth, email, password);
     }
 
-    const createUserWithEmailAndPassword = async (email: string, password: string) => {
-        await createUserWithEmailAndPassword(email, password);
+    const createUser = async (email: string, password: string) => {
+        await createUserWithEmailAndPassword(auth, email, password);
     }
 
-    const signOut = async () => {
-        await signOut().then(clear);
+    const logOut = async () => {
+        await signOut(auth).then(clear);
     }
 }
