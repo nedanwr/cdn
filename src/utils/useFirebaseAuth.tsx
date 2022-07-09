@@ -43,4 +43,12 @@ export const useFirebaseAuth = () => {
     const signInWithEmailAndPassword = async (email: string, password: string) => {
         await signInWithEmailAndPassword(email, password);
     }
+
+    const createUserWithEmailAndPassword = async (email: string, password: string) => {
+        await createUserWithEmailAndPassword(email, password);
+    }
+
+    const signOut = async () => {
+        await signOut().then(clear);
+    }
 }
