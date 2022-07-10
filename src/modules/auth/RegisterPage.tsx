@@ -1,22 +1,30 @@
 import type { NextPage } from "next";
 import { useState, FormEvent, ChangeEvent } from "react";
 import Head from "next/head";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, UserCredential } from "firebase/auth";
+
+// Import Utils
+import { setAdditionalUserData } from "@utils/setAdditionalUserData";
 
 export const RegisterPage: NextPage = () => {
     // State
+    const [displayName, setDisplayName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     // Register User
-    const registerUser = async (email: string, password: string) => {
+    const registerUser = async (email: string, password: string, displayName: string) => {
         const auth = getAuth();
         createUserWithEmailAndPassword(auth, email, password)
+            .then(async (response: UserCredential) => {
+                await setAdditionalUserData(response.user.uid, displayName);
+            })
             .catch((error: Error) => {
-               console.error(error.message);
+               throw error;
             })
             .finally(() => {
                 // Reset State
+                setDisplayName("");
                 setEmail("");
                 setPassword("");
                 // Redirect to Login Page
@@ -39,7 +47,7 @@ export const RegisterPage: NextPage = () => {
                    spellCheck={`false`}
                    onSubmit={async (e: FormEvent<HTMLFormElement>) => {
                        e.preventDefault();
-                       await registerUser(email, password);
+                       await registerUser(email, password, displayName);
                    }}
                >
                    <h1 className={`font-bold text-2xl mb-6 text-gray-100`}>Create an account</h1>
