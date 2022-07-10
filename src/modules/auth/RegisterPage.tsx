@@ -96,6 +96,8 @@ export const RegisterPage: NextPage = () => {
                            onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                            required
                        />
+                       {/* eslint-disable-next-line react/no-unescaped-entities */}
+                       <p className="text-xs mt-1 text-gray-400">Don't use a sus email provider, we check. If you do, we will permanently ban <br />you from using our services in the future.</p>
                    </div>
                    <div className="flex flex-col mb-6">
                        <label
@@ -120,6 +122,7 @@ export const RegisterPage: NextPage = () => {
                            onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                            required
                        />
+                       <p className={`text-xs mt-1 text-gray-400`}>Passwords must be a minimum of 8 characters. 64 characters maximum.</p>
                    </div>
                    <button
                        type={`submit`}
