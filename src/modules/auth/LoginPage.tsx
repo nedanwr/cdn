@@ -96,6 +96,8 @@ export const LoginPage: NextPage = () => {
                             required
                         />
                     </div>
+                    {/* eslint-disable-next-line react/no-unescaped-entities */}
+                    <p id="no-account" className={`text-xs text-gray-400`}>Don't have an account? Sucks to be you lmfao. This is a fucking invite-only <br />service dip-shit.</p>
                     <button
                         type={`submit`}
                         className={`bg-amber-500 text-white py-3.5 px-44 rounded-3xl w-full mt-6 font-medium`}
