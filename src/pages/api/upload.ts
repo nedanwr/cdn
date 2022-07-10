@@ -1,6 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import nextConnect from "next-connect";
 import multer from "multer";
+import { randomUUID } from "crypto";
+import { getDownloadURL } from "firebase/storage";
+
+// Import Utils
+import { uploadImage } from "../../utils/uploadImage";
 
 interface NextConnectApiRequest extends NextApiRequest {
     file: Express.Multer.File;
@@ -37,3 +42,16 @@ export const apiRoute = nextConnect({
 
 // Upload a File
 apiRoute.use(upload.single("file"));
+
+// Handle Upload
+apiRoute.post(async (req: NextConnectApiRequest, res: NextApiResponse) => {
+    await uploadImage(randomUUID(), req.file!)
+        .then((url) => {
+            setTimeout(async () => {
+                return await getDownloadURL(url);
+            }, 10000)
+        })
+        .catch((error: Error) => {
+            throw error;
+        });
+});
