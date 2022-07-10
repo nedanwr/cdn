@@ -48,7 +48,12 @@ apiRoute.post(async (req: NextConnectApiRequest, res: NextApiResponse) => {
     await uploadImage(randomUUID(), req.file!)
         .then((url) => {
             setTimeout(async () => {
-                return await getDownloadURL(url);
+                return res.status(201)
+                    .json({
+                        statusCode: 201,
+                        message: "File Uploaded",
+                        url: await getDownloadURL(url),
+                    });
             }, 10000)
         })
         .catch((error: Error) => {
