@@ -56,4 +56,11 @@ apiRoute.post(async (req: NextConnectApiRequest, res: NextApiResponse) => {
         });
 });
 
+// Disallow body parsing, consume as stream
+export const config = {
+    api: {
+        bodyParser: false,
+    }
+};
+
 export default apiRoute;
