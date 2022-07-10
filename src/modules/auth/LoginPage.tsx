@@ -66,12 +66,21 @@ export const LoginPage: NextPage = () => {
                         />
                     </div>
                     <div className="flex flex-col mb-6">
-                        <label
-                            htmlFor={`password`}
-                            className={`font-medium text-sm mb-1.5`}
-                        >
-                            Password
-                        </label>
+                        <div className="flex flex-row justify-between">
+                            <label
+                                htmlFor={`password`}
+                                className={`font-medium text-sm mb-1.5`}
+                            >
+                                Password
+                            </label>
+                            <a
+                                href={`/auth/reset`}
+                                id="forgot-password"
+                                className={`font-medium text-sm text-amber-500`}
+                            >
+                                Forgot Password?
+                            </a>
+                        </div>
                         <input
                             type={`password`}
                             name={`password`}
