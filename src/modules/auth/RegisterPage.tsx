@@ -53,6 +53,30 @@ export const RegisterPage: NextPage = () => {
                    <h1 className={`font-bold text-2xl mb-6 text-gray-100`}>Create an account</h1>
                    <div className="flex flex-col mb-6">
                        <label
+                           htmlFor={`displayName`}
+                           className={`font-medium text-sm mb-1.5`}
+                       >
+                           Name
+                       </label>
+                       <input
+                           type={`text`}
+                           name={`displayName`}
+                           id={`displayName`}
+                           aria-label={`Albus`}
+                           className={`text-left text-black outline-none border-2 rounded px-4 py-2.5`}
+                           placeholder={`Albus`}
+                           spellCheck={`false`}
+                           autoCapitalize={`none`}
+                           autoComplete={`off`}
+                           autoCorrect={`off`}
+                           onChange={(e: ChangeEvent<HTMLInputElement>) => setDisplayName(e.target.value)}
+                           required
+                       />
+                       {/* eslint-disable-next-line react/no-unescaped-entities */}
+                       <p className={`text-xs mt-1 text-gray-400`}>You don't have to use your real full name. Just whichever name you prefer.</p>
+                   </div>
+                   <div className="flex flex-col mb-6">
+                       <label
                            htmlFor={`email`}
                            className={`font-medium text-sm mb-1.5`}
                        >
