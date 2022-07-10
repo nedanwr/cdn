@@ -20,6 +20,10 @@ export const verifyToken = async (req: NextApiRequest, res: NextApiResponse, nex
                         error: "Forbidden",
                         message: "You are not authorized to access this resource."
                     });
+
+            // Check if user with secret key in token exists
+
+            next();
         });
     }
 }
