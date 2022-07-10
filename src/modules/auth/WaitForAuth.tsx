@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useAuth } from "../../context/authUserContext";
+import { useAuth } from "@context/authUserContext";
 
 export const WaitForAuth = ({ children }: any) => {
     const { authUser, loading } = useAuth();

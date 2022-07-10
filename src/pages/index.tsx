@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { WaitForAuth } from "../modules/auth/WaitForAuth";
+import { WaitForAuth } from "@modules/auth/WaitForAuth";
 import { getAuth, signOut } from "firebase/auth";
 
 const Home: NextPage = () => {
