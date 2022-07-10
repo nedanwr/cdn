@@ -115,6 +115,8 @@ export const RegisterPage: NextPage = () => {
                            autoCapitalize={`none`}
                            autoComplete={`off`}
                            autoCorrect={`off`}
+                           minLength={8}
+                           maxLength={64}
                            onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                            required
                        />
