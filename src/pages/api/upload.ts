@@ -19,7 +19,7 @@ const upload = multer({
     }
 });
 
-export const apiRoute = nextConnect({
+const apiRoute = nextConnect({
     // Handle Errors
     onError: (error, req: NextConnectApiRequest, res: NextApiResponse) => {
         return res.status(501)
@@ -55,3 +55,5 @@ apiRoute.post(async (req: NextConnectApiRequest, res: NextApiResponse) => {
             throw error;
         });
 });
+
+export default apiRoute;
